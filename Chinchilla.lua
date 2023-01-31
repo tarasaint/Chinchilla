@@ -192,6 +192,13 @@ function Chinchilla:OnInitialize()
 		_G["Boss"..i.."TargetFrame"]:SetPoint("TOP", i == 1 and Chinchilla_BossAnchor or _G["Boss"..(i-1).."TargetFrame"], i == 1 and "TOP" or "BOTTOM")
 		_G["Boss"..i.."TargetFrame"].SetPoint = function() end
 	end
+
+	if self:IsWrathClassic() then
+		-- Fix for tracking icon not draggable. See also ShowHide.lua and MoveButtons.lua
+		local bp, __, brp, xofs, yofs = MiniMapTrackingButton:GetPoint()
+		MiniMapTrackingButton:SetPoint(MiniMapTracking:GetPoint())
+		MiniMapTracking:SetPoint(bp, MiniMapTrackingButton, brp, xofs, yofs)
+	end
 end
 
 function Chinchilla:OnEnable()

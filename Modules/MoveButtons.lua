@@ -259,7 +259,7 @@ function MoveButtons:OnInitialize()
 			lfg = MiniMapLFGFrame,
 			dayNight = GameTimeFrame,
 			clock = TimeManagerClockButton,
-			track = MiniMapTracking,
+			track = MiniMapTrackingButton, -- Part of fix for Tracking button not draggable
 			voice = MiniMapVoiceChatFrame,
 			zoomIn = MinimapZoomIn,
 			zoomOut = MinimapZoomOut,

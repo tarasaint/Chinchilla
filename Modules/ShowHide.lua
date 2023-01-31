@@ -43,7 +43,7 @@ function ShowHide:OnInitialize()
 			map = "MiniMapWorldMapButton",
 			mail = "MiniMapMailFrame",
 			dayNight = "GameTimeFrame",
-			track = "MiniMapTracking",
+			track = "MiniMapTrackingButton", -- Part of fix for tracking button not draggable
 			zoomIn = "MinimapZoomIn",
 			zoomOut = "MinimapZoomOut",
 			clock = "TimeManagerClockButton",
@@ -69,7 +69,8 @@ function ShowHide:OnInitialize()
 
 	for _, frame in pairs(frames) do
 		if _G[frame] then
-			_G[frame].__origParent = _G[frame]:GetParent():GetName()
+			-- Removed GetName(): as of 22.10.25 SetParent() does not accept a string
+			_G[frame].__origParent = _G[frame]:GetParent()
 		else
 			Chinchilla:Print(frame, "has changed or no longer exists. Please notify the addon author.")
 		end
